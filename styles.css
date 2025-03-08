@@ -1,0 +1,89 @@
+/* Additional custom styles beyond Tailwind */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #007AFF;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-track {
+        background: #1C1C1E;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #555;
+    }
+}
+
+/* Game container responsive adjustments */
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus states for accessibility */
+a:focus, button:focus {
+    outline: 2px solid #007AFF;
+    outline-offset: 2px;
+}
+
+/* Animation for game cards */
+.game-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    header, footer, .related-games {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .game-container {
+        display: none;
+    }
+    
+    .game-info {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+} 

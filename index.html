@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Survivors | Mini Game List Nav</title>
+    <meta name="description" content="Play Monster Survivors - an exciting survival game where you battle endless waves of monsters with unique abilities and upgrades.">
+    <link rel="canonical" href="https://minigamenav.com/monster-survivors">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            gray: '#8E8E93',
+                            green: '#34C759',
+                            red: '#FF3B30',
+                            darkbg: '#1C1C1E',
+                            lightbg: '#F2F2F7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-apple-lightbg dark:bg-apple-darkbg text-gray-800 dark:text-white transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-900 shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-apple-blue mb-4 md:mb-0">Mini Game List Nav</a>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="/" class="hover:text-apple-blue transition-colors">Home</a></li>
+                        <li><a href="/games" class="hover:text-apple-blue transition-colors">Games</a></li>
+                        <li><a href="/categories" class="hover:text-apple-blue transition-colors">Categories</a></li>
+                        <li><a href="/about" class="hover:text-apple-blue transition-colors">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Monster Survivors</h1>
+            <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-8">Battle endless waves of monsters in this thrilling survival game with unique abilities and upgrades!</p>
+            
+            <div class="game-container mb-8">
+                <iframe 
+                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
+                    class="w-full border-0 rounded-lg shadow-lg"
+                    allowfullscreen
+                    title="Monster Survivors Game"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+        <section class="game-info bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-apple-blue">Game Overview</h2>
+            <p class="mb-6">Monster Survivors is an action-packed survival game where you must fend off endless waves of monsters. Choose your character, unlock powerful abilities, and see how long you can survive against the increasing difficulty.</p>
+            
+            <h2 class="text-2xl font-bold mb-4 text-apple-blue">How to Play</h2>
+            <ul class="list-disc pl-6 mb-6 space-y-2">
+                <li>Use WASD or arrow keys to move your character</li>
+                <li>Automatically attack nearby enemies</li>
+                <li>Collect experience orbs to level up</li>
+                <li>Choose new abilities and upgrades when you level up</li>
+                <li>Survive as long as possible against increasingly difficult waves</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mb-4 text-apple-blue">Game Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="feature-card p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">Multiple Characters</h3>
+                    <p>Choose from different characters with unique starting abilities and playstyles.</p>
+                </div>
+                <div class="feature-card p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">Ability System</h3>
+                    <p>Unlock and upgrade various abilities to create powerful combinations.</p>
+                </div>
+                <div class="feature-card p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">Enemy Variety</h3>
+                    <p>Face different types of monsters with unique behaviors and abilities.</p>
+                </div>
+                <div class="feature-card p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">Progressive Difficulty</h3>
+                    <p>The game gets increasingly challenging the longer you survive.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Mini Game List Nav</h3>
+                    <p>Your ultimate destination for free online games. Play instantly in your browser without downloads.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="hover:text-apple-blue transition-colors">Home</a></li>
+                        <li><a href="/popular-games" class="hover:text-apple-blue transition-colors">Popular Games</a></li>
+                        <li><a href="/new-games" class="hover:text-apple-blue transition-colors">New Games</a></li>
+                        <li><a href="/contact" class="hover:text-apple-blue transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/category/action" class="hover:text-apple-blue transition-colors">Action</a></li>
+                        <li><a href="/category/adventure" class="hover:text-apple-blue transition-colors">Adventure</a></li>
+                        <li><a href="/category/puzzle" class="hover:text-apple-blue transition-colors">Puzzle</a></li>
+                        <li><a href="/category/strategy" class="hover:text-apple-blue transition-colors">Strategy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2023 Mini Game List Nav. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set iframe height based on aspect ratio
+        const gameContainer = document.querySelector('.game-container');
+        const iframe = gameContainer.querySelector('iframe');
+        
+        function setIframeHeight() {
+            const width = gameContainer.clientWidth;
+            // 16:9 aspect ratio
+            const height = width * 0.5625;
+            iframe.style.height = `${height}px`;
+        }
+        
+        // Set initial height
+        setIframeHeight();
+        
+        // Update height on window resize
+        window.addEventListener('resize', setIframeHeight);
+    </script>
+</body>
+</html> 
