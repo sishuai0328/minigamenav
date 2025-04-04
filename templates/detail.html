@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.fields.title }} - MiniGameBar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- 游戏评价 -->
+    <div class="game-rating">
+        <h2 class="section-title">游戏简介</h2>
+        <div class="game-intro">
+            <h1 class="game-title">{{ game.fields.title }}</h1>
+            
+            {% if game.fields.features %}
+            <p class="game-features">{{ game.fields.features }}</p>
+            {% endif %}
+            
+            <div class="rating-tags">
+                {% if game.fields.tags and game.fields.tags|length > 0 %}
+                    {% for tag in game.fields.tags %}
+                        <span class="tag tag-{{ loop.index % 3 + 1 }}">{{ tag }}</span>
+                    {% endfor %}
+                {% else %}
+                    <span class="tag tag-no-tag">暂无标签</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 马上游戏 -->
+    <div class="game-play">
+        <h2 class="section-title">马上游戏</h2>
+        {% if game.fields.game_url %}
+            <div class="game-frame">
+                <iframe src="{{ game.fields.game_url }}" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+                </iframe>
+            </div>
+        {% else %}
+            <div class="no-game-url">
+                <p>抱歉，该游戏暂时无法访问</p>
+                <p class="sub-text">请稍后再试或选择其他游戏</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- 游戏截图 -->
+    <div class="screenshots">
+        <h2 class="section-title">游戏截图</h2>
+        {% if game.fields.gamescreenshots and game.fields.gamescreenshots|length > 0 %}
+            <div class="screenshot-carousel">
+                <div class="carousel-container">
+                    {% for screenshot in game.fields.gamescreenshots %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ screenshot }}" alt="游戏截图 {{ loop.index }}" loading="lazy">
+                    </div>
+                    {% endfor %}
+                    
+                    <!-- 导航按钮 -->
+                    {% if game.fields.gamescreenshots|length > 1 %}
+                    <button class="carousel-control prev">&lt;</button>
+                    <button class="carousel-control next">&gt;</button>
+                    
+                    <!-- 指示器 -->
+                    <div class="carousel-indicators">
+                        {% for screenshot in game.fields.gamescreenshots %}
+                        <span class="indicator {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}"></span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- 缩略图 -->
+                {% if game.fields.gamescreenshots|length > 1 %}
+                <div class="thumbnail-container">
+                    {% for screenshot in game.fields.gamescreenshots %}
+                    <div class="thumbnail {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}">
+                        <img src="{{ screenshot }}" alt="缩略图 {{ loop.index }}" loading="lazy">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="no-screenshots">
+                <p>暂无游戏截图</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- 游戏介绍 -->
+    <div class="game-description">
+        <h2 class="section-title">游戏介绍</h2>
+        <div class="gameplay">
+            {% if game.fields.gameplay %}
+                {{ game.fields.gameplay | safe }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 轮播图功能
+    const carousel = document.querySelector('.screenshot-carousel');
+    if (carousel) {
+        const items = carousel.querySelectorAll('.carousel-item');
+        const indicators = carousel.querySelectorAll('.indicator');
+        const thumbnails = carousel.querySelectorAll('.thumbnail');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        
+        let currentIndex = 0;
+        let intervalId = null;
+        const autoPlayDelay = 5000; // 自动轮播间隔，5秒
+        
+        // 显示指定索引的轮播项
+        function showSlide(index) {
+            // 确保索引在有效范围内
+            if (index < 0) index = items.length - 1;
+            if (index >= items.length) index = 0;
+            
+            currentIndex = index;
+            
+            // 更新轮播项状态
+            items.forEach((item, i) => {
+                item.classList.toggle('active', i === currentIndex);
+            });
+            
+            // 更新指示器状态
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentIndex);
+            });
+            
+            // 更新缩略图状态
+            thumbnails.forEach((thumbnail, i) => {
+                thumbnail.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        // 下一张
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+        
+        // 上一张
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+        
+        // 开始自动轮播
+        function startAutoPlay() {
+            stopAutoPlay(); // 先停止现有的自动轮播
+            intervalId = setInterval(nextSlide, autoPlayDelay);
+        }
+        
+        // 停止自动轮播
+        function stopAutoPlay() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        
+        // 绑定导航按钮事件
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
+                stopAutoPlay();
+                startAutoPlay(); // 点击后重新开始自动轮播
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+                stopAutoPlay();
+                startAutoPlay(); // 点击后重新开始自动轮播
+            });
+        }
+        
+        // 绑定指示器点击事件
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                showSlide(index);
+                stopAutoPlay();
+                startAutoPlay(); // 点击后重新开始自动轮播
+            });
+        });
+        
+        // 绑定缩略图点击事件
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', function() {
+                showSlide(index);
+                stopAutoPlay();
+                startAutoPlay(); // 点击后重新开始自动轮播
+            });
+        });
+        
+        // 鼠标悬停在轮播上时暂停自动轮播
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+        
+        // 设置触摸滑动支持
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        carousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50; // 滑动阈值
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // 向左滑动，显示下一张
+                nextSlide();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                // 向右滑动，显示上一张
+                prevSlide();
+            }
+            stopAutoPlay();
+            startAutoPlay(); // 滑动后重新开始自动轮播
+        }
+        
+        // 初始化轮播
+        showSlide(0);
+        
+        // 只有当有多个截图时才启动自动轮播
+        if (items.length > 1) {
+            startAutoPlay();
+        }
+    }
+});
+</script>
+{% endblock %} 

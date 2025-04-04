@@ -1,0 +1,197 @@
+/* 任天堂风格的配色变量 */
+:root {
+    --nintendo-red: #e60012;
+    --nintendo-blue: #00a0e9;
+    --nintendo-light-blue: #87CEEB;
+    --nintendo-yellow: #ffd000;
+    --nintendo-green: #1ed760;
+    --nintendo-dark: #323232;
+    --nintendo-gray: #f5f5f5;
+    --nintendo-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --nintendo-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 重置样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.6;
+    color: var(--nintendo-dark);
+    background-color: var(--nintendo-gray);
+}
+
+/* 顶部导航栏样式 */
+.top-nav {
+    background: linear-gradient(135deg, var(--nintendo-red) 0%, #ff4d4d 100%);
+    padding: 0.75rem 0;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.region-selector select {
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.region-selector select:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.region-selector select option {
+    color: var(--nintendo-dark);
+    background-color: #fff;
+}
+
+/* 主要内容区域 */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: var(--nintendo-shadow);
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: var(--nintendo-hover-shadow);
+}
+
+/* 页脚样式 */
+footer {
+    background: linear-gradient(135deg, var(--nintendo-dark) 0%, #4a4a4a 100%);
+    padding: 3rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.slogan {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* 中间点号样式 */
+.slogan::before {
+    content: "•";
+    color: var(--nintendo-red);
+    font-size: 1.8rem;
+    margin-right: 0.8rem;
+    vertical-align: middle;
+    text-shadow: none;
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.btn-primary {
+    background-color: var(--nintendo-red);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #ff1a1a;
+    transform: translateY(-2px);
+    box-shadow: var(--nintendo-hover-shadow);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem;
+    }
+
+    main {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+}
+
+/* 通用样式 */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+} 
