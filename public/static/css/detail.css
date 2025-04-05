@@ -1,0 +1,445 @@
+/* 游戏详情页样式 */
+.game-detail {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.game-header .game-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.game-header .game-features {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.game-content {
+    display: grid;
+    gap: 3rem;
+}
+
+/* 通用样式 */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--nintendo-red);
+    color: var(--nintendo-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 游戏评价 */
+.game-rating {
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 0%, var(--nintendo-gray) 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.game-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.game-intro .game-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--nintendo-dark);
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+
+.game-intro .game-features {
+    font-size: 1.1rem;
+    color: var(--nintendo-dark);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    font-style: italic;
+    text-align: center;
+    max-width: 90%;
+}
+
+.rating-tags {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.rating-tags .tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.rating-tags .tag:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--nintendo-hover-shadow);
+}
+
+.rating-tags .tag-1 {
+    background: linear-gradient(135deg, var(--nintendo-red) 0%, #ff4d4d 100%);
+    color: #fff;
+}
+
+.rating-tags .tag-2 {
+    background: linear-gradient(135deg, var(--nintendo-blue) 0%, var(--nintendo-light-blue) 100%);
+    color: #fff;
+}
+
+.rating-tags .tag-3 {
+    background: linear-gradient(135deg, var(--nintendo-yellow) 0%, #ffeb3b 100%);
+    color: var(--nintendo-dark);
+}
+
+.rating-tags .tag-no-tag {
+    background: linear-gradient(135deg, #9e9e9e 0%, #e0e0e0 100%);
+    color: var(--nintendo-dark);
+    opacity: 0.7;
+}
+
+/* 游戏区域 */
+.game-play {
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #fff 0%, var(--nintendo-gray) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.game-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 宽高比 */
+    background-color: var(--nintendo-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.game-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.no-game-url {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--nintendo-gray);
+    border-radius: 8px;
+    color: var(--nintendo-dark);
+    box-shadow: var(--nintendo-shadow);
+}
+
+.no-game-url p {
+    margin: 0;
+}
+
+.no-game-url p:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--nintendo-red);
+    margin-bottom: 1rem;
+}
+
+.no-game-url .sub-text {
+    font-size: 1rem;
+    color: var(--nintendo-dark);
+    opacity: 0.8;
+}
+
+/* 游戏截图 */
+.screenshots {
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #fff 0%, var(--nintendo-gray) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.screenshot-carousel {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--nintendo-shadow);
+    aspect-ratio: 16/9;
+    background-color: var(--nintendo-dark);
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 轮播控制按钮 */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 1.5rem;
+    color: var(--nintendo-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.carousel-control:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* 轮播指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: var(--nintendo-red);
+    transform: scale(1.2);
+}
+
+/* 缩略图容器 */
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    overflow-x: auto;
+    padding: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--nintendo-red) var(--nintendo-gray);
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.thumbnail-container::-webkit-scrollbar-track {
+    background: var(--nintendo-gray);
+    border-radius: 3px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background: var(--nintendo-red);
+    border-radius: 3px;
+}
+
+.thumbnail {
+    flex: 0 0 100px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.thumbnail.active {
+    opacity: 1;
+    border-color: var(--nintendo-red);
+}
+
+.thumbnail:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 无截图状态 */
+.no-screenshots {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--nintendo-gray);
+    border-radius: 8px;
+    color: var(--nintendo-dark);
+}
+
+/* 游戏介绍 */
+.game-description {
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #fff 0%, var(--nintendo-gray) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.gameplay {
+    line-height: 1.8;
+    color: var(--nintendo-dark);
+    font-size: 1.1rem;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .rating-tags .tag {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .thumbnail {
+        flex: 0 0 140px;
+        height: 80px;
+    }
+
+    .gameplay {
+        font-size: 1rem;
+    }
+
+    .game-header .game-title {
+        font-size: 2rem;
+    }
+
+    .game-header .game-features {
+        font-size: 1rem;
+    }
+
+    .game-content {
+        gap: 2rem;
+    }
+
+    .game-play,
+    .screenshots,
+    .game-description {
+        padding: 1rem;
+    }
+}
+
+/* 游戏信息 */
+.game-info {
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #fff 0%, var(--nintendo-gray) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.game-info .info {
+    width: 100%;
+}
+
+.game-info h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--nintendo-dark);
+    text-align: center;
+    font-weight: bold;
+}
+
+.game-info .description {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--nintendo-dark);
+    text-align: center;
+}
+
+.game-info p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.game-info p strong {
+    color: var(--nintendo-red);
+    margin-right: 0.5rem;
+} 

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - MiniGameBar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="game-categories">
+        <h2 class="section-title">游戏分类</h2>
+        <div class="category-grid">
+            <a href="{{ url_for('index', type='全部') }}" class="category-item {% if current_type == '全部' %}active{% endif %}">全部</a>
+            <a href="{{ url_for('index', type='动作类') }}" class="category-item {% if current_type == '动作类' %}active{% endif %}">动作类</a>
+            <a href="{{ url_for('index', type='策略类') }}" class="category-item {% if current_type == '策略类' %}active{% endif %}">策略类</a>
+            <a href="{{ url_for('index', type='角色扮演类') }}" class="category-item {% if current_type == '角色扮演类' %}active{% endif %}">角色扮演类</a>
+            <a href="{{ url_for('index', type='模拟经营类') }}" class="category-item {% if current_type == '模拟经营类' %}active{% endif %}">模拟经营类</a>
+            <a href="{{ url_for('index', type='解谜类') }}" class="category-item {% if current_type == '解谜类' %}active{% endif %}">解谜类</a>
+            <a href="{{ url_for('index', type='体育竞技类') }}" class="category-item {% if current_type == '体育竞技类' %}active{% endif %}">体育竞技类</a>
+            <a href="{{ url_for('index', type='休闲益智类') }}" class="category-item {% if current_type == '休闲益智类' %}active{% endif %}">休闲益智类</a>
+        </div>
+    </div>
+
+    <div class="game-list">
+        <h2 class="section-title">游戏列表</h2>
+        <div class="games-grid">
+            {% for game in games %}
+            <div class="game-card">
+                <a href="/game/{{ game.record_id }}">
+                    <div class="game-cover">
+                        <img src="{{ game.fields.gamecover }}" alt="{{ game.fields.title }}">
+                        <div class="game-overlay">
+                            <div class="game-info">
+                                <h3 class="game-title">{{ game.fields.title }}</h3>
+                                {% if game.fields.features %}
+                                <p class="game-features">{{ game.fields.features }}</p>
+                                {% endif %}
+                                <div class="game-tags">
+                                    {% if game.fields.tags and game.fields.tags|length > 0 %}
+                                        {% for tag in game.fields.tags %}
+                                            <span class="game-tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

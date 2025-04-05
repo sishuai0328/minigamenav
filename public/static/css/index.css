@@ -1,0 +1,251 @@
+/* 类型导航样式 */
+.type-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.type-link {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.type-link:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.type-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* 游戏分类样式 */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--nintendo-red);
+    color: var(--nintendo-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-categories {
+    margin-bottom: 3rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.category-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--nintendo-blue) 0%, var(--nintendo-light-blue) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: var(--nintendo-shadow);
+}
+
+.category-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--nintendo-hover-shadow);
+}
+
+.category-item.active {
+    background: linear-gradient(135deg, var(--nintendo-red) 0%, #ff4d4d 100%);
+}
+
+/* 游戏列表样式 */
+.game-list {
+    margin-top: 3rem;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.game-card {
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--nintendo-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--nintendo-hover-shadow);
+}
+
+.game-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.game-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-cover {
+    position: relative;
+    padding-top: 75%; /* 4:3 宽高比 */
+    background-color: var(--nintendo-gray);
+    overflow: hidden;
+}
+
+.game-cover img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-cover img {
+    transform: scale(1.05);
+}
+
+/* 游戏信息蒙层 */
+.game-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%; /* 进一步增加蒙层高度，确保标签可见 */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.4) 85%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.game-card:hover .game-overlay {
+    height: 60%; /* 进一步增加悬停时的高度，确保更好地显示内容 */
+}
+
+.game-info {
+    padding: 0.9rem 1rem; /* 调整内边距，上下减小一点 */
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: visible; /* 确保内容可见 */
+}
+
+.game-title {
+    font-size: 1.1rem; /* 稍微减小标题大小 */
+    margin-bottom: 0.4rem; /* 减小下边距 */
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+}
+
+.game-features {
+    font-size: 0.8rem; /* 稍微减小字体大小 */
+    margin-bottom: 0.5rem; /* 调整下边距 */
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover .game-features {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.4em;
+}
+
+.game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-bottom: 0.2rem; /* 添加底部内边距，避免标签贴底 */
+}
+
+.game-tag {
+    font-size: 0.65rem; /* 减小标签字体 */
+    padding: 0.12rem 0.4rem; /* 减小内边距 */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.25);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100px;
+    margin-bottom: 0.3rem; /* 添加底部外边距，确保标签不会贴在底部 */
+}
+
+.game-type {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    background-color: var(--nintendo-red);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-top: 0.3rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+} 
