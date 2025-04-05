@@ -1,0 +1,23 @@
+name = "minigamenav"
+type = "webpack"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2023-04-05"
+
+[site]
+bucket = "."
+entry-point = "workers-site"
+
+[build]
+command = ""
+upload.format = "service-worker"
+
+[env.production]
+routes = [
+  { pattern = "*minigamenav.com/*", zone_name = "minigamenav.com" }
+]
+
+[env.staging]
+name = "minigamenav-staging" 
